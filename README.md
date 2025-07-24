@@ -2,7 +2,7 @@
 # Scentient
 **Scentient** predicts fragrance notes from molecular compositions using machine learning and chemical feature extraction.  
 It leverages cheminformatics tools like **RDKit** and **Mordred** to process SMILES strings and generate molecular descriptors.
-a
+
 ## License
 
 This project is licensed under the **Business Source License 1.1 (BUSL-1.1)**.  
