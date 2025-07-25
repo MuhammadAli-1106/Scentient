@@ -5,7 +5,7 @@ import logging
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
-def select_top_features(features_csv, labels_csv, output_csv, top_n=250):
+def select_top_features(features_csv, labels_csv, output_csv, importance_csv, top_n=250):
     # Load data
     features = pd.read_csv(features_csv)
     labels = pd.read_csv(labels_csv)
@@ -30,14 +30,17 @@ def select_top_features(features_csv, labels_csv, output_csv, top_n=250):
         'mi_score': mi_scores
     }).sort_values(by='mi_score', ascending=False)
 
+    # Save feature importance for analysis
+    feature_ranking.to_csv(importance_csv, index=False)
+    logging.info(f"Feature importance saved to {importance_csv}")
+
     # Select top N features
     top_features = feature_ranking.head(top_n)['feature'].tolist()
     logging.info(f"Selected top {len(top_features)} features based on mutual information.")
-    
+
     # Filter original data
     final_df = df[['name', 'odor'] + top_features]
 
     # Save to CSV
     final_df.to_csv(output_csv, index=False)
     logging.info(f"✅ Final dataset saved to {output_csv}. Shape: {final_df.shape}")
-
