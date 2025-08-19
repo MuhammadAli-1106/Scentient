@@ -31,7 +31,7 @@ ENV/
 
 # Model outputs (include for now)
 # models/
-*.pkl
+# *.pkl
 *.joblib
 *.hdf5
 *.onnx
