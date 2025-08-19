@@ -25,12 +25,12 @@ ENV/
 *.conda
 *.lock
 
-# Data files (exclude all but one sample)
-data/*
-!data/sample_data.csv
+# Data files (include for now)(exclude all but one sample)
+# data/*
+# !data/sample_data.csv
 
-# Model outputs
-models/
+# Model outputs (include for now)
+# models/
 *.pkl
 *.joblib
 *.hdf5
